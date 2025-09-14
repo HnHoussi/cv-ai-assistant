@@ -16,9 +16,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
-import uploadCV from './routes/uploadCV'
-import chatRoute from "./routes/chat"
-import coverLetterRoute from "./routes/coverLetter"
+import uploadCV from './routes/uploadCV.js'
+import chatRoute from "./routes/chat.js"
+import coverLetterRoute from "./routes/coverLetter.js"
 
 //Request the routes
 app.use("/api/upload-cv", uploadCV);
