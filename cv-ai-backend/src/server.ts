@@ -1,22 +1,33 @@
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
-
+// import framework express
+import express = require('express');
+// Middleware to read the request body
+import bodyParser = require('body-parser');
+// Middleware to allow cross-origin requests (front end)
+import cors = require('cors');
+// get environment variables from .env
+import dotenv = require('dotenv');
 dotenv.config();
 
+// create the Express application
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Simple test route
-app.get("/", (req, res) => {
-    res.send("🚀 Backend is running!");
+// Routes
+import uploadCV from './routes/uploadCV'
+import chatRoute from "./routes/chat"
+import coverLetterRoute from "./routes/coverLetter"
+
+//Request the routes
+app.use("/api/upload-cv", uploadCV);
+app.use("/api/chat", chatRoute);
+app.use("/api/coverLetter", coverLetterRoute);
+
+// Starting the server
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log(`Listening on port http://localhost:${port}`);
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
