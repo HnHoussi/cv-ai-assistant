@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {parseCV} from "./services/cvParser"
+import {parseCV} from "../services/cvParserService.js"
 import {supabase} from "../config/db.js";
 
 // create router object to hold routes

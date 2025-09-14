@@ -1,7 +1,7 @@
 import {Router} from "express";
 
 // import service (AI model)
-import {askAI} from "../services/aiService";
+import {askAI} from "../services/aiService.js";
 
 // create router object to hold routes
 const router = Router();

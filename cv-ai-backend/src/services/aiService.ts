@@ -21,6 +21,7 @@ export async function askAI(candidateData: any, question: string): Promise<strin
         body: JSON.stringify({inputs: prompt})
     });
 
-    const result = await response.json();
+    // Hugging Face returns an array of outputs, we take the first one
+    const result: any = await response.json();
     return result[0]?.generated_text || "No answer generated.";
 }
