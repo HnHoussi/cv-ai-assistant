@@ -3,13 +3,18 @@ import {Router} from "express";
 // import service (AI model)
 import {askAI} from "../services/aiService.js";
 
+import { getCandidateProfile } from "../services/candidateService.js";
+
 // create router object to hold routes
 const router = Router();
 
 // post method with candidate data and a job description
 router.post("/", async (req, res) => {
     try {
-        const {candidateData, jobDescription} = req.body;
+        const {candidateId, jobDescription} = req.body;
+
+        // Fetch candidate profile
+        const candidateData = await getCandidateProfile(candidateId);
 
         // prompt for the AI
         const prompt = `Candidate Data: ${JSON.stringify(candidateData)}
@@ -18,10 +23,10 @@ router.post("/", async (req, res) => {
                         `;
 
         //Sends the prompt to the AI service
-        const letter = await askAI(candidateData, prompt);
+        const coverLetter = await askAI(candidateData, prompt);
 
         // return the generated cover letter
-        res.json({coverLetter: letter});
+        res.json({coverLetter});
 
     } catch (error) {
         console.log(error);

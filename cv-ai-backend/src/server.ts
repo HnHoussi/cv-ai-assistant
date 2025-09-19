@@ -1,11 +1,14 @@
 // import framework express
-import express = require('express');
+import express from 'express';
+
 // Middleware to read the request body
-import bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
+
 // Middleware to allow cross-origin requests (front end)
-import cors = require('cors');
+import cors from 'cors';
+
 // get environment variables from .env
-import dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
 
 // create the Express application

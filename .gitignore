@@ -1,26 +1,41 @@
 # ------------------------
 # Backend
 # ------------------------
-cv-ai-backend/node_modules
+cv-ai-backend/node_modules/
 cv-ai-backend/.env
+cv-ai-backend/dist/
+cv-ai-backend/dist-ssr/
 
 # ------------------------
 # Frontend
 # ------------------------
-cv-ai-frontend/node_modules
+cv-ai-frontend/node_modules/
 cv-ai-frontend/.env
+cv-ai-frontend/dist/
+cv-ai-frontend/dist-ssr/
 
 # ------------------------
 # IDE / Editor
 # ------------------------
+.vscode/
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # ------------------------
 # System
 # ------------------------
+.DS_Store
 Thumbs.db
 
 # ------------------------
 # Logs
 # ------------------------
 *.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*

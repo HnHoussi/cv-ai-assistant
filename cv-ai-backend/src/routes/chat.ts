@@ -3,6 +3,8 @@ import {Router} from "express";
 // import service (AI model)
 import {askAI} from "../services/aiService.js";
 
+import { getCandidateProfile } from "../services/candidateService.js";
+
 // create router object to hold routes
 const router = Router();
 
@@ -11,13 +13,16 @@ const router = Router();
 router.post("/", async (req, res) => {
     try {
         // question about the candidate infos
-        const {candidateData, question} = req.body;
+        const {candidateId, question} = req.body;
+
+        // Fetch candidate profile from DB
+        const candidateData = await getCandidateProfile(candidateId);
 
         // calls the AI service
-        const response = await askAI(candidateData, question);
+        const answer = await askAI(candidateData, question);
 
         // send back a JSON with the AI answer
-        res.json({answer: response});
+        res.json({answer});
 
     } catch (err) {
 
